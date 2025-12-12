@@ -18,6 +18,9 @@ public class AuthService {
         if (password == null || password.isBlank()) {
             throw new IllegalArgumentException("Password is required");
         }
+        if (password.length() < 8) {
+            throw new IllegalArgumentException("Password must be at least 8 characters");
+        }
         if (pin == null || pin.length() < 4) {
             throw new IllegalArgumentException("PIN must be at least 4 digits");
         }
