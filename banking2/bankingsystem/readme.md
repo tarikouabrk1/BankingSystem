@@ -45,7 +45,6 @@ SecuredBankingSystem/
 ```
 
 ---
-# Section à Ajouter au README
 
 ## 🔄 Système de Migration de Base de Données
 
