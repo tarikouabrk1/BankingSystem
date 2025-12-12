@@ -375,7 +375,6 @@ CREATE TABLE rsa_keys (
 ### Prérequis
 
 - **Java 21** ou supérieur
-- **Maven 3.8+**
 - **MySQL 8.0+**
 - **JavaFX 21** (inclus dans pom.xml)
 
@@ -399,10 +398,10 @@ export DB_PASS=votre_mot_de_passe
 
 ```bash
 # Compiler le projet
-mvn clean compile
+javac Main (ou mvn compile si on utilise Maven)
 
 # Lancer l'application
-mvn javafx:run
+java Main (ou mvn javax:run si on utilise Maven)
 ```
 
 La base de données et les tables seront créées automatiquement au premier lancement.
@@ -491,15 +490,15 @@ BigInteger decrypted = RSAEncryption.decrypt(encrypted, kp.privateExponent, kp.m
 ## ⚠️ Limitations Connues (Projet Académique)
 
 ### Sécurité
-- ❌ **Pas de padding OAEP pour RSA** : Vulnérable aux attaques (OK pour projet éducatif)
-- ❌ **Une seule itération de SHA-256** : Production nécessite PBKDF2 avec 10,000+ itérations
-- ❌ **Clé privée RSA stockée en clair** : Production nécessite HSM ou chiffrement avec clé maître
-- ❌ **Pas de 2FA** : Authentification à facteur unique
+-  **Pas de padding OAEP pour RSA** : Vulnérable aux attaques (OK pour projet éducatif)
+-  **Une seule itération de SHA-256** : Production nécessite PBKDF2 avec 10,000+ itérations
+-  **Clé privée RSA stockée en clair** : Production nécessite HSM ou chiffrement avec clé maître
+-  **Pas de 2FA** : Authentification à facteur unique
 
 ### Performance
-- ⚠️ **Génération RSA lente** : 2-5 secondes au premier démarrage
-- ⚠️ **Déchiffrement lent** : Chaque transaction nécessite 3 déchiffrements RSA
-- ⚠️ **Pas de cache** : Les transactions sont déchiffrées à chaque affichage
+-  **Génération RSA lente** : 2-5 secondes au premier démarrage
+-  **Déchiffrement lent** : Chaque transaction nécessite 3 déchiffrements RSA
+-  **Pas de cache** : Les transactions sont déchiffrées à chaque affichage
 
 ### Recommandations pour Production
 1. Utiliser `javax.crypto.Cipher` avec padding OAEP pour RSA
@@ -560,7 +559,7 @@ java -cp target/classes test.SecurityTest
 
 ---
 
-## 📞 Support
+## Support
 
 Pour toute question sur l'implémentation des algorithmes, consultez :
 - Les commentaires dans `SHA256Hashing.java`
